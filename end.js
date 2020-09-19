@@ -2,6 +2,7 @@ const username = document.getElementById('username');
 const saveScoreBtn = document.getElementById('saveScoreBtn')
 const finalScoreNow = document.getElementById('finalScore')
 const mostRecentScore = localStorage.getItem('mostRecentScore')
+console.log(mostRecentScore)
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
@@ -16,13 +17,16 @@ username.addEventListener('keyup', () =>{
 });
 
 saveHighScore = e => {
-    console.log("clicked oga , clicked")
+    // console.log("clicked oga , clicked")
     e.preventDefault();
 
     const score = {
-        score: Math.floor(Math.random()*100),
+        // score: Math.floor(Math.random()*100),
+        score: mostRecentScore,
         name: username.value
     };
+
+    console.log( 'i amd' + score)
 
     highScores.push(score);
     highScores.sort((a, b) => b.score - a.score );
